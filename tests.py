@@ -1,17 +1,11 @@
-"""
-app tests example
-
-"""
-
 from app import is_alive_host
 
-
-def test_alive_host():
-    pass
+import unittest
 
 
-def test_down_host():
-    pass
+class TestApi(unittest.TestCase):
+    def test_alive_host(self):
+        self.assertTrue(is_alive_host("vk.com"))
 
-    
-/// etc...
+    def test_down_host(self):
+        self.assertFalse(is_alive_host("shava.rim"))
