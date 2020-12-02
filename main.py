@@ -6,9 +6,9 @@ from app import is_alive_host
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/healthz")
 async def get_is_alive_host(hostname: str = Query(...)):
-    return {"host is ": "alive" if is_alive_host(hostname) else "dead"}
+    return {"status": "up" if is_alive_host(hostname) else "down"}
 
 if __name__ == '__main__':
-    uvicorn.run('main:app', host='127.0.0.1', port=8000, reload=True)
+    uvicorn.run('main:app', host='127.0.0.1', port=8001, reload=True)
